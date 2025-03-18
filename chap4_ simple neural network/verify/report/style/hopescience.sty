@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     hopescience   v1.0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% 数学符号
+% 使用更加现代的 newtx
+\usepackage{ifthen}
+\newboolean{useTimesNewRoman}
+\setboolean{useTimesNewRoman}{false}
+
+\ifthenelse{\boolean{useTimesNewRoman}}{
+    \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+    \usepackage{fontspec}
+    \setmainfont{KaiTi}
+}{
+    % 上面定义成了个false，因此论文应该用的是这个格式
+    \usepackage{amsthm,amscd, amsfonts}
+}
+
+\theoremstyle{definition}
+\newtheorem{thm}{定理\hspace{0.05pt}}[section]
+\newtheorem{cor}{推论\hspace{0.05pt}}[section]
+\newtheorem{lem}{引理\hspace{0.05pt}}[section]
+\newtheorem{prop}{命题\hspace{0.05pt}}[section]
+\newtheorem{conj}{猜想\hspace{0.05pt}}[section]
+\newtheorem{assume}{假设\hspace{0.05pt}}[section]
+\newtheorem{dfn}{定义\hspace{0.05pt}}[section]
+\newtheorem{exmp}{例\hspace{0.05pt}}[section]
+\newtheorem{rem}{注\hspace{0.05pt}}[section]
+\newtheorem*{pf}{证明}
+
+% 伪代码
+\usepackage{algorithm}
+\usepackage{algpseudocodex}
+% 修改 caption 格式为中文
+\usepackage{caption}
+\captionsetup[algorithm]{labelsep=space}  % 调整标题间隔符为空格
+\floatname{algorithm}{算法}               % 修改标题文字为中文算法
+
+
+
+% 绘图
+\usepackage{graphicx}
+
+% 代码块
+\usepackage[section]{minted}
+\renewcommand{\listingscaption}{代码}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+% \BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
+% \AfterEndEnvironment{minted}{\end{tcolorbox}}%
+\definecolor{bg}{rgb}{0.96,0.96,0.96}
+\setminted{linenos,
+  bgcolor=bg,
+  fontsize=\normalsize,
+  breaklines,
+  mathescape}
+
+% 引用
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+% 为各种环境定义引用名称
+\crefname{equation}{式}{式}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+
+

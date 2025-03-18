@@ -1,0 +1,21 @@
+class Mul():
+def __init__(self):
+    self.mem = {}
+
+def forward(self, inp, w):
+    # inp.shape: (N, num_features)
+    # w.shape: (in_dim, out_dim)
+    # outp.shape: (N, out_dim)
+    self.mem['inp'] = inp
+    self.mem['w'] = w
+    # print(inp.shape, w.shape)
+    outp = inp @ w
+    return outp
+
+def backward(self, grad_outp):
+    # grad_outp.shape: (N, out_dim)
+    # grad_inp.shape: (N, num_features)
+    # grad_w.shape: (in_dim, out_dim)
+    grad_inp = np.matmul(grad_outp, self.mem['w'].T)
+    grad_w = np.matmul(self.mem['inp'].T, grad_outp)
+    return grad_inp, grad_w

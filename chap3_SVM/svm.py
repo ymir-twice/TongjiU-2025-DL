@@ -34,7 +34,9 @@ class SVM():
 
     def __init__(self):
         # 请补全此处代码
-        pass
+        # 特征形状为 (N, 2)
+        self.w = np.zeros(2)
+        self.b = 0
 
     def train(self, data_train):
         """
@@ -42,6 +44,7 @@ class SVM():
         """
 
         # 请补全此处代码
+        pass
 
     def predict(self, x):
         """
@@ -49,17 +52,21 @@ class SVM():
         """
 
         # 请补全此处代码
+        pass
 
-
-if __name__ == '__main__':
-    # 载入数据，实际实用时将x替换为具体名称
-    train_file = 'data/train_linear.txt'
-    test_file = 'data/test_linear.txt'
+def main(train_file, test_file, model):
+    """
+        作用: 训练模型并预测
+        参数:
+            train_file: 训练数据文件
+            test_file: 测试数据文件
+            model: 模型实例
+    """
     data_train = load_data(train_file)  # 数据格式[x1, x2, t]
     data_test = load_data(test_file)
 
     # 使用训练集训练SVM模型
-    svm = SVM()  # 初始化模型
+    # svm = SVM()  # 初始化模型
     svm.train(data_train)  # 训练模型
 
     # 使用SVM模型预测标签
@@ -75,3 +82,9 @@ if __name__ == '__main__':
     acc_test = eval_acc(t_test, t_test_pred)
     print("train accuracy: {:.1f}%".format(acc_train * 100))
     print("test accuracy: {:.1f}%".format(acc_test * 100))
+
+if __name__ == '__main__':
+    # 载入数据，实际实用时将x替换为具体名称
+    train_file = 'data/train_linear.txt'
+    test_file = 'data/test_linear.txt'
+    main(train_file, test_file)
